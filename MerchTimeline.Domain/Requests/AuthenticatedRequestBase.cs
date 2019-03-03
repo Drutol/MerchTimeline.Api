@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using MediatR;
-using MerchTimeline.Domain.Entities;
 
-namespace MerchTimeline.Domain.Requests.Queries
+namespace MerchTimeline.Domain.Requests
 {
-    public class GetMerchItemsQuery : AuthenticatedRequestBase, IRequest<List<MerchItem.Dto>> 
+    public abstract class AuthenticatedRequestBase : IAuthenticatedRequest
     {
         public string Token { get; set; }
         public long UserId { get; set; }

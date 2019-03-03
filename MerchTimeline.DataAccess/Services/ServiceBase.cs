@@ -9,46 +9,46 @@ namespace MerchTimeline.DataAccess.Services
 {
     public class ServiceBase<T> : IServiceBase<T> where T : class
     {
-        private readonly TimelineDbContext _context;
+        protected readonly TimelineDbContext Context;
 
         public ServiceBase(TimelineDbContext context)
         {
-            _context = context;
+            Context = context;
         }
 
         public IQueryable<T> GetAll()
         {
-            return _context.Set<T>().AsQueryable();
+            return Context.Set<T>().AsQueryable();
         }
 
         public T FirstOrDefault()
         {
-            return _context.Set<T>().First();
+            return Context.Set<T>().First();
         }
 
         public T FirstOrDefault(Expression<Func<T, bool>> predicate)
         {
-            return _context.Set<T>().FirstOrDefault(predicate);
+            return Context.Set<T>().FirstOrDefault(predicate);
         }
 
         public IQueryable<T> GetAll(Expression<Func<T, bool>> predicate)
         {
-            return _context.Set<T>().Where(predicate).AsQueryable();
+            return Context.Set<T>().Where(predicate).AsQueryable();
         }
 
         public void Add(T entity)
         {
-            _context.Set<T>().Add(entity);
+            Context.Set<T>().Add(entity);
         }
 
         public void Remove(T entity)
         {
-            _context.Set<T>().Remove(entity);
+            Context.Set<T>().Remove(entity);
         }
 
         public void Update(T entity)
         {
-            _context.Set<T>().Update(entity);
+            Context.Set<T>().Update(entity);
         }
     }
 

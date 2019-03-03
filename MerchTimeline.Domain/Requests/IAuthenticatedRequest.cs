@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MerchTimeline.Domain.Entities;
+﻿using MediatR;
 
-namespace MerchTimeline.Interfaces
+namespace MerchTimeline.Domain.Requests
 {
     public interface IAuthenticatedRequest
     {

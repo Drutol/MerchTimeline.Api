@@ -30,6 +30,11 @@ namespace MerchTimeline.Domain.Entities
             public MerchKind Kind { get; set; }
             public string ImageUrl { get; set; }
 
+            public Dto()
+            {
+
+            }
+
             public Dto(MerchItem item)
             {
                 Name = item.Name;

@@ -5,11 +5,14 @@ using System.Reflection;
 using System.Threading.Tasks;
 using MediatR;
 using MediatR.Pipeline;
+using MerchTimeline.Api.Middleware;
 using MerchTimeline.DataAccess;
 using MerchTimeline.DataAccess.Services;
 using MerchTimeline.Domain.Requests;
+using MerchTimeline.Domain.Requests.Queries;
 using MerchTimeline.Interfaces;
 using MerchTimeline.Processing.Behaviours;
+using MerchTimeline.Processing.Queries;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -40,10 +43,10 @@ namespace MerchTimeline.Api
             services.AddDbContext<TimelineDbContext>();
             services.AddSingleton<IConfigurationProvider, ConfigurationProvider>();
 
-            services.AddTransient(typeof(IServiceBase<>), typeof(ServiceBase<>));
-            services.AddTransient(typeof(IRequestPreProcessor<>), typeof(AuthorizeRequestBehaviour<>));
+            services.AddScoped(typeof(IServiceBase<>), typeof(ServiceBase<>));
+            services.AddScoped(typeof(IUserService), typeof(UserService));
 
-            services.AddMediatR(Assembly.GetAssembly(typeof(CreateMerchItemCommand)));
+            services.AddMediatR(Assembly.GetAssembly(typeof(GetMerchItemsQueryHandler)));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,14 +54,15 @@ namespace MerchTimeline.Api
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                //app.UseDeveloperExceptionPage();
             }
             else
             {
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+                //app.UseHsts();
             }
 
+            app.UseMiddleware<ExceptionFormattingMiddleware>();
             app.UseHttpsRedirection();
             app.UseMvc();
         }

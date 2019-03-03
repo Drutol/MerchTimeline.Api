@@ -17,5 +17,6 @@ namespace MerchTimeline.Domain.Entities
         public AppUser Owner { get; set; }
 
         public ICollection<MerchItemSlot> MerchItems { get; set; } = new HashSet<MerchItemSlot>();
+        public ICollection<MerchItemUsagePeriod> UsagePeriods { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using MerchTimeline.Interfaces;
+using MerchTimeline.Domain.Requests;
 
 namespace MerchTimeline.Domain.Exceptions
 {

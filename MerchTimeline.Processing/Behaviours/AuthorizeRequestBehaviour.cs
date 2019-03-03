@@ -7,6 +7,7 @@ using MediatR;
 using MediatR.Pipeline;
 using MerchTimeline.Domain.Entities;
 using MerchTimeline.Domain.Exceptions;
+using MerchTimeline.Domain.Requests;
 using MerchTimeline.Interfaces;
 
 namespace MerchTimeline.Processing.Behaviours

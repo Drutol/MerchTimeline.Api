@@ -12,6 +12,8 @@ namespace MerchTimeline.DataAccess
     {
         private readonly IConfigurationProvider _configurationProvider;
 
+        public DbSet<AppUser> Users { get; set; }
+
         public TimelineDbContext(IConfigurationProvider configurationProvider)
         {
             _configurationProvider = configurationProvider;
@@ -27,6 +29,12 @@ namespace MerchTimeline.DataAccess
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetAssembly(typeof(MerchItem)));
             base.OnModelCreating(modelBuilder);
+        }
+
+        public override void Dispose()
+        {
+            SaveChanges();
+            base.Dispose();
         }
     }
 }
