@@ -7,6 +7,7 @@ namespace MerchTimeline.Domain.Enums
     public enum MerchKind
     {
         Tapestry,
+        TapestryHorizontal,
         Dakimakura,
     }
 }

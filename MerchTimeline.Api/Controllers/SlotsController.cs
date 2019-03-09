@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MerchTimeline.Api.Utils;
 using MerchTimeline.Domain.Requests.Commands;
+using MerchTimeline.Domain.Requests.Queries;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MerchTimeline.Api.Controllers
@@ -12,6 +13,12 @@ namespace MerchTimeline.Api.Controllers
     [Route("api/slots")]
     public class SlotsController : ApiControllerBase
     {
+        [HttpGet]
+        public async Task<IActionResult> GetSlots()
+        {
+            return Ok(await Mediator.Send(new GetSlotsQuery().Authenticate(HttpContext)));
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateSlot(CreateSlotCommand command)
         {

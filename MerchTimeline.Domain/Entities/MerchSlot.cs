@@ -18,5 +18,22 @@ namespace MerchTimeline.Domain.Entities
 
         public ICollection<MerchItemSlot> MerchItems { get; set; } = new HashSet<MerchItemSlot>();
         public ICollection<MerchItemUsagePeriod> UsagePeriods { get; set; }
+
+        public class Dto
+        {
+            public long Id { get; set; }
+            public string Name { get; set; }
+
+            public Dto()
+            {
+
+            }
+
+            public Dto(MerchSlot slot)
+            {
+                Id = slot.Id;
+                Name = slot.Name;
+            }
+        }
     }
 }
