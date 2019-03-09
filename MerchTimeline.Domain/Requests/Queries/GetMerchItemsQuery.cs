@@ -8,7 +8,6 @@ namespace MerchTimeline.Domain.Requests.Queries
 {
     public class GetMerchItemsQuery : AuthenticatedRequestBase, IRequest<List<MerchItem.Dto>> 
     {
-        public string Token { get; set; }
-        public long UserId { get; set; }
+
     }
 }

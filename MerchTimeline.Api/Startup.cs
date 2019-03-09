@@ -47,6 +47,10 @@ namespace MerchTimeline.Api
             services.AddScoped(typeof(IUserService), typeof(UserService));
 
             services.AddMediatR(Assembly.GetAssembly(typeof(GetMerchItemsQueryHandler)));
+
+            services.AddCors(options =>
+                options.AddPolicy("GlobalPolicy",
+                    builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,6 +66,7 @@ namespace MerchTimeline.Api
                 //app.UseHsts();
             }
 
+            app.UseCors("GlobalPolicy");
             app.UseMiddleware<ExceptionFormattingMiddleware>();
             app.UseHttpsRedirection();
             app.UseMvc();

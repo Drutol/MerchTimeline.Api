@@ -8,6 +8,7 @@ using MediatR;
 using MerchTimeline.Domain.Entities;
 using MerchTimeline.Domain.Requests.Queries;
 using MerchTimeline.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace MerchTimeline.Processing.Queries
 {
@@ -23,7 +24,8 @@ namespace MerchTimeline.Processing.Queries
         public async Task<List<MerchItem.Dto>> Handle(GetMerchItemsQuery request, CancellationToken cancellationToken)
         {
             return _itemsService
-                .GetAll(item => item.Owner.Id == request.UserId).Select(item => new MerchItem.Dto(item))
+                .GetAll(item => item.Owner.Id == request.UserId).Include(item => item.ItemType)
+                .Select(item => new MerchItem.Dto(item))
                 .ToList();
         }
     }

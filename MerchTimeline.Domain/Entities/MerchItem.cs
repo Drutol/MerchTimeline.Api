@@ -26,6 +26,7 @@ namespace MerchTimeline.Domain.Entities
 
         public class Dto
         {
+            public long Id { get; set; }
             public string Name { get; set; }
             public MerchKind Kind { get; set; }
             public string ImageUrl { get; set; }
@@ -37,6 +38,7 @@ namespace MerchTimeline.Domain.Entities
 
             public Dto(MerchItem item)
             {
+                Id = item.Id;
                 Name = item.Name;
                 Kind = item.ItemType.Kind;
                 ImageUrl = item.ImageUrl;
