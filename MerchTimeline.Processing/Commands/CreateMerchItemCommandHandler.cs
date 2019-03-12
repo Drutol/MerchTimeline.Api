@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using MerchTimeline.Domain.Entities;
+using MerchTimeline.Domain.Exceptions;
 using MerchTimeline.Domain.Requests;
 using MerchTimeline.Interfaces;
 
@@ -24,6 +25,11 @@ namespace MerchTimeline.Processing.Commands
 
         public Task<Unit> Handle(CreateMerchItemCommand request, CancellationToken cancellationToken)
         {
+            if (_itemsService.Count(i => i.OwnerId == request.UserId) > 100)
+            {
+                throw new RequestException("No more than 100 items allowed.");
+            }
+
             var item = new MerchItem
             {
                 OwnerId = request.UserId,

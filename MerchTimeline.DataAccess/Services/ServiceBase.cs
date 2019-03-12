@@ -21,6 +21,16 @@ namespace MerchTimeline.DataAccess.Services
             return Context.Set<T>().AsQueryable();
         }
 
+        public int Count(Expression<Func<T, bool>> predicate)
+        {
+            return Context.Set<T>().Where(predicate).Count();      
+        }
+
+        public int Count()
+        {
+            return Context.Set<T>().Count();
+        }
+
         public T FirstOrDefault()
         {
             return Context.Set<T>().First();

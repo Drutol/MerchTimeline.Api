@@ -35,9 +35,9 @@ namespace MerchTimeline.Api.Middleware
 
         private static Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
-            var code = HttpStatusCode.InternalServerError; // 500 if unexpected
+            var code = HttpStatusCode.InternalServerError;
 
-            if (exception is ValidationException) code = HttpStatusCode.BadRequest;
+            if (exception is RequestException) code = HttpStatusCode.BadRequest;
             if (exception is UnauthorizedException) code = HttpStatusCode.Unauthorized;
 
             var result = JsonConvert.SerializeObject(new { error = exception },

@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using MerchTimeline.Domain.Entities;
+using MerchTimeline.Domain.Exceptions;
 using MerchTimeline.Domain.Requests.Commands;
 using MerchTimeline.Interfaces;
 
@@ -21,6 +22,11 @@ namespace MerchTimeline.Processing.Commands
 
         public Task<Unit> Handle(CreateSlotCommand request, CancellationToken cancellationToken)
         {
+            if (_slotService.Count(i => i.OwnerId == request.UserId) > 10)
+            {
+                throw new RequestException("No more than 10 slots allowed.");
+            }
+
             _slotService.Add(new MerchSlot
             {
                 Name = request.Name,

@@ -11,6 +11,9 @@ namespace MerchTimeline.Interfaces
         IQueryable<T> GetAll();
         IQueryable<T> GetAll(Expression<Func<T, bool>> predicate);
 
+        int Count();
+        int Count(Expression<Func<T, bool>> predicate);
+
         T FirstOrDefault();
         T FirstOrDefault(Expression<Func<T, bool>> predicate);
 
