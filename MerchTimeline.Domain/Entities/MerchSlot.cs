@@ -6,17 +6,14 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MerchTimeline.Domain.Entities
 {
-    public class MerchSlot
+    public class MerchSlot : EntityBase, IEntityWithOwner
     {
-        public long Id { get; set; }
-
         public long OwnerId { get; set; }
 
         public string Name { get; set; }
 
         public AppUser Owner { get; set; }
 
-        public ICollection<MerchItemSlot> MerchItems { get; set; } = new HashSet<MerchItemSlot>();
         public ICollection<MerchItemUsagePeriod> UsagePeriods { get; set; }
 
         public class Dto

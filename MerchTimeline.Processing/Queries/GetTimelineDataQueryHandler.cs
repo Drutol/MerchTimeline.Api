@@ -46,6 +46,7 @@ namespace MerchTimeline.Processing.Queries
                     Order = 1,
                     TimelineEntries = grouping.Select(period => new TimelineEntry
                     {
+                        Id = period.Id,
                         Name = period.MerchItem.Name,
                         ImageUrl = period.MerchItem.ImageUrl,
                         Start = period.Start,

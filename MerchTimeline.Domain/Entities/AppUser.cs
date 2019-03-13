@@ -6,10 +6,8 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MerchTimeline.Domain.Entities
 {
-    public class AppUser
+    public class AppUser : EntityBase
     {
-        public long Id { get; set; }
-
         public string Username { get; set; }
         public string AuthToken { get; set; }
 

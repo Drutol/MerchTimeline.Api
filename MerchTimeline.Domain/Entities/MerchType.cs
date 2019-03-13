@@ -7,10 +7,8 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MerchTimeline.Domain.Entities
 {
-    public class MerchType
+    public class MerchType : EntityBase
     {
-        public long Id { get; set; }
-
         public string Name { get; set; }
         public MerchKind Kind { get; set; }
 

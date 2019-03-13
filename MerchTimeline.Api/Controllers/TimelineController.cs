@@ -29,6 +29,13 @@ namespace MerchTimeline.Api.Controllers
             return Ok(await Mediator.Send(command.Authenticate(HttpContext)));
         }
 
+        [HttpPost("{id}/modify")]
+        public async Task<IActionResult> ModifyPeriod(long id, ModifyPeriodCommand command)
+        {
+            command.Id = id;
+            return Ok(await Mediator.Send(command.Authenticate(HttpContext)));
+        }
+
 
     }
 }
