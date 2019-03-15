@@ -13,7 +13,7 @@ namespace MerchTimeline.DataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityAlwaysColumn),
                     Username = table.Column<string>(nullable: true),
                     AuthToken = table.Column<string>(nullable: true)
                 },
@@ -27,7 +27,7 @@ namespace MerchTimeline.DataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityAlwaysColumn),
                     Name = table.Column<string>(nullable: true),
                     Kind = table.Column<int>(nullable: false)
                 },
@@ -41,7 +41,7 @@ namespace MerchTimeline.DataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityAlwaysColumn),
                     OwnerId = table.Column<long>(nullable: false),
                     Name = table.Column<string>(nullable: true)
                 },
@@ -61,7 +61,7 @@ namespace MerchTimeline.DataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityAlwaysColumn),
                     OwnerId = table.Column<long>(nullable: false),
                     ItemTypeId = table.Column<long>(nullable: false),
                     Name = table.Column<string>(nullable: true),
@@ -89,7 +89,7 @@ namespace MerchTimeline.DataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityAlwaysColumn),
                     MerchSlotId = table.Column<long>(nullable: true),
                     MerchItemId = table.Column<long>(nullable: true)
                 },
@@ -115,7 +115,7 @@ namespace MerchTimeline.DataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityAlwaysColumn),
                     MerchItemId = table.Column<long>(nullable: false),
                     Start = table.Column<DateTime>(nullable: false),
                     End = table.Column<DateTime>(nullable: false)
