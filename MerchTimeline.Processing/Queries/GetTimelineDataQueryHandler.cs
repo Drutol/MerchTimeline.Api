@@ -26,12 +26,10 @@ namespace MerchTimeline.Processing.Queries
 
         public async Task<TimelineData> Handle(GetTimelineDataQuery request, CancellationToken cancellationToken)
         {
-            var user = _userService.Get(request);
-
             var periods =_usageService
                 .GetAll(period => period.MerchItem.OwnerId == request.UserId && 
                                   period.Start >= request.From && 
-                                  period.End <= request.To)
+                                  (period.End == null || period.End <= request.To))
                 .Include(period => period.MerchItem)
                 .Include(period => period.MerchSlot)
                 .ToList();
