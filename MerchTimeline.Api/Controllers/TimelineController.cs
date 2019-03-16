@@ -36,6 +36,15 @@ namespace MerchTimeline.Api.Controllers
             return Ok(await Mediator.Send(command.Authenticate(HttpContext)));
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePeriod(long id)
+        {
+            return Ok(await Mediator.Send(new DeleteUsagePeriodCommand
+            {
+                Id = id
+            }.Authenticate(HttpContext)));
+        }
+
 
     }
 }
